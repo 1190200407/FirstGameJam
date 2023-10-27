@@ -7,6 +7,20 @@ using UnityEngine;
 /// </summary>
 public class Water : MonoBehaviour
 {
+    public float surviveTime = 0f;
+
+    private void Update()
+    {
+        if (surviveTime > 0f)
+        {
+            surviveTime -= Time.deltaTime;
+            if (surviveTime < 0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     public void SetSpeed(float speed, Vector3 dir)
     {
         GetComponent<Rigidbody2D>().velocity = dir * speed;
