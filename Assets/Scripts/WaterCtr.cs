@@ -10,8 +10,6 @@ public class WaterCtr : MonoBehaviour
 {
     public bool IsOpen { get; private set; }
 
-    [Header("水流绘制器")]
-    public WaterRenderer waterRenderer;
     [Header("所有水滴的父物体")]
     public GameObject waterParent;
 
@@ -25,31 +23,57 @@ public class WaterCtr : MonoBehaviour
     public float waterMinInitialSpeed = 5f;
     [Header("水滴最大初速度")]
     public float waterMaxInitialSpeed = 10f;
+    [Header("水滴重力")]
+    public float waterGravity = 1f;
+    [Header("水滴的生存时间")]
+    public float waterSurviveTime = 5f;
+    [Header("等待多少秒开始加速")]
+    public float waterWaitForSpeedUpTime = 1f;
 
-    private float waterInitialSpeed = 0f;
-    public Coroutine waterMakingProcess;
+    public float WaterInitialSpeed {  get; private set; }
+    public Vector3 WaterDir => GetComponent<SpriteRenderer>().flipX ? -transform.right : transform.right;
+
+    private void Start()
+    {
+        WaterInitialSpeed = waterMinInitialSpeed;
+    }
 
     public IEnumerator MakeWater()
     {
         while (IsOpen)
         {
-            waterInitialSpeed = Mathf.Min(waterInitialSpeed + waterAcceleration, waterMaxInitialSpeed);
             GameObject newDrop = Instantiate(waterPrefab, transform.position, Quaternion.identity, waterParent.transform);
-            newDrop.GetComponent<Water>().SetSpeed(waterInitialSpeed, transform.right);
+            newDrop.GetComponent<Water>().surviveTime = waterSurviveTime;
+            newDrop.GetComponent<Water>().SetSpeed(WaterInitialSpeed, WaterDir);
+            newDrop.GetComponent<Rigidbody2D>().gravityScale = waterGravity;
             yield return new WaitForSeconds(waterMakingInternal);
+        }
+    }
+
+    public IEnumerator WaterSpeedUp()
+    {
+        yield return new WaitForSeconds(waterWaitForSpeedUpTime);
+
+        float acc = 0f;
+        while (IsOpen)
+        {
+            yield return null;
+            acc += Time.deltaTime * waterAcceleration;
+            WaterInitialSpeed = Mathf.Min(WaterInitialSpeed + acc * Time.deltaTime, waterMaxInitialSpeed);
         }
     }
 
     public void StartPouring()
     {
         IsOpen = true;
-        waterMakingProcess = StartCoroutine(MakeWater());
+        StartCoroutine(MakeWater());
+        StartCoroutine(WaterSpeedUp());
     }
 
     public void EndPouring()
     {
         IsOpen = false;
-        StopCoroutine(waterMakingProcess);
-        waterInitialSpeed = waterMinInitialSpeed;
+        StopAllCoroutines();
+        WaterInitialSpeed = waterMinInitialSpeed;
     }
 }
