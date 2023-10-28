@@ -11,10 +11,13 @@ public class UIMgr : MonoBehaviour
     public Text nowScoreText;
     public Text goalScoreText;
 
+    public PauseMenu pauseMenu;
+
     private void Start()
     {
         nowScoreText ??= GameObject.Find("NowScore").GetComponent<Text>();
         goalScoreText ??= GameObject.Find("GoalScore").GetComponent<Text>();
+        pauseMenu ??= GetComponent<PauseMenu>();
     }
 
     public void OnScoreChange(int score)

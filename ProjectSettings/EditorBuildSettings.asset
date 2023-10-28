@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/AsyncLoad.unity
-    guid: cde0f607d971b21499641b7a58c32ebf
-  - enabled: 1
-    path: Assets/Scenes/LegacyLevel.unity
-    guid: ca6f7786c0cce024a8224ba26bf5030b
-  - enabled: 1
-    path: Assets/Scenes/UIDemo.unity
-    guid: ff7ceb900fc153445bdb943328eeefe2
+    path: Assets/Scenes/StartMenu.unity
+    guid: bd9cd70765d5d7c459e13ae61d094050
   m_configObjects: {}

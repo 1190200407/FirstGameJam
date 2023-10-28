@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.SceneManagement;
+=======
+using UnityEngine.EventSystems;
+
+>>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c
 /// <summary>
 /// ”Œœ∑÷– ‡
 /// </summary>
@@ -78,13 +83,17 @@ public class GameCtr : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             waterCtr.StartPouring();
         }
-        if (Input.GetMouseButtonUp(0)) 
+        if (Input.GetMouseButtonUp(0) && waterCtr.IsOpen) 
         {
             waterCtr.EndPouring();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiMgr.pauseMenu.PauseOrResume();
         }
     }
 
