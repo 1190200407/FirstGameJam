@@ -641,12 +641,12 @@ MonoBehaviour:
   waterParent: {fileID: 1519684217}
   waterPrefab: {fileID: 7839720838304663135, guid: 708e18cb337d13440acfde05b16634ce, type: 3}
   waterMakingInternal: 0.15
-  waterAcceleration: 30
+  waterAcceleration: 10
   waterMinInitialSpeed: 5
   waterMaxInitialSpeed: 20
   waterGravity: 1
   waterSurviveTime: 5
-  waterWaitForSpeedUpTime: 0.5
+  waterWaitForSpeedUpTime: 0.2
 --- !u!114 &833493332
 MonoBehaviour:
   m_ObjectHideFlags: 0
