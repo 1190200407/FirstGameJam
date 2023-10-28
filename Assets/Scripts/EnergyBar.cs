@@ -44,7 +44,6 @@ public class EnergyBar : MonoBehaviour
 
     public void SetMaxEnergy(float newMaxEnergy)
     {
-
         energySlider.maxValue = newMaxEnergy;
     }
 }

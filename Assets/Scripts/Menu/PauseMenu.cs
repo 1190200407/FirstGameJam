@@ -11,19 +11,20 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        Resume();
+    }
+
+    public void PauseOrResume()
+    {
+        if (!isGamePaused)
         {
-            if (!isGamePaused)
-            {
-                Pause();
-            }
-            else
-            {
-                Resume();
-            }
+            Pause();
+        }
+        else
+        {
+            Resume();
         }
     }
 
@@ -34,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;//¡¢øÃ‘›Õ£”Œœ∑
@@ -48,13 +49,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        UnityEngine.Debug.Log("restart current game...");
-        SceneManager.LoadScene("LevelScene");
-    }
-
-    public void QuitGame()
-    {
-        UnityEngine.Debug.Log("quitting game...");
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

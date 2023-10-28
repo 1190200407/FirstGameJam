@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// ”Œœ∑÷– ‡
@@ -73,13 +74,17 @@ public class GameCtr : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             waterCtr.StartPouring();
         }
-        if (Input.GetMouseButtonUp(0)) 
+        if (Input.GetMouseButtonUp(0) && waterCtr.IsOpen) 
         {
             waterCtr.EndPouring();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiMgr.pauseMenu.PauseOrResume();
         }
     }
 
