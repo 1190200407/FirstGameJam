@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-<<<<<<< HEAD:Assets/Scripts/Menu&Scene/PauseMenu.cs
+
         UnityEngine.Debug.Log("restart current game...");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;//»º³åÊ±¼ä»Ö¸´ÓÎÏ·
@@ -61,8 +61,8 @@ public class PauseMenu : MonoBehaviour
     {
         UnityEngine.Debug.Log("quitting game...");
         Application.Quit();
-=======
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
->>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c:Assets/Scripts/Menu/PauseMenu.cs
+
     }
 }

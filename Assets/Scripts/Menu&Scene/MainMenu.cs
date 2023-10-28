@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class MainMenu : MonoBehaviour
 {
-<<<<<<< HEAD:Assets/Scripts/Menu&Scene/MainMenu.cs
-    public GameObject settingMenuUI;
+
+    //public GameObject settingMenuUI;
     //public GameObject pauseMenuUI;
 
     bool isLevel0Pass = false;
     bool isLevel1Pass = false;
     bool isLevel2Pass = false;
     bool isLevel3Pass = false;
-=======
+
     public List<Button> levelButtons;
     public Button soundButton;
     public Button quitButton;
->>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c:Assets/Scripts/Menu/MainMenu.cs
-
+    public Sprite muOnImg;
+    public Sprite muOffImg;
+    public static bool isMuOn = true;
 
     void Start()
     {
-<<<<<<< HEAD:Assets/Scripts/Menu&Scene/MainMenu.cs
-        settingMenuUI.SetActive(false);
+
+        //settingMenuUI.SetActive(false);
         //pauseMenuUI.SetActive(false);
-=======
         //获取UI
         if (levelButtons == null || levelButtons.Count == 0)
         {
@@ -34,21 +35,20 @@ public class MainMenu : MonoBehaviour
             for (int i = 0; i < 4; i++)
                 levelButtons.Add(GameObject.Find("levelBtn" + i.ToString()).GetComponent<Button>());
         }
-
         soundButton ??= GameObject.Find("SoundBtn").GetComponent<Button>();
         quitButton ??= GameObject.Find("QuitBtn").GetComponent<Button>();
-
-        SetLevelButtons();
-
         //添加监听
         soundButton.onClick.AddListener(SwitchSound);
         quitButton.onClick.AddListener(QuitGame);
+
+        SetLevelButtons();
         foreach (var button in levelButtons)
-            button.onClick.AddListener(()=>
+            button.onClick.AddListener(() =>
             {
                 EnterLevel(levelButtons.IndexOf(button));
             });
->>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c:Assets/Scripts/Menu/MainMenu.cs
+        
+
     }
 
     /// <summary>
@@ -63,20 +63,48 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        UnityEngine.Application.Quit();
     }
 
     public void SwitchSound()
     {
+        if (isMuOn)
+        {
+            isMuOn = false;
+            //shut down music//
+            UnityEngine.Debug.Log("shut down music"+isMuOn);
+            soundButton.GetComponent<UnityEngine.UI.Image>().sprite = muOffImg;
+            return;
+        }
+        else
+        {
+            isMuOn = true;
+            //turn on music//
+            UnityEngine.Debug.Log("turn on music"+isMuOn);
+            soundButton.GetComponent<UnityEngine.UI.Image>().sprite = muOnImg;
+            return;
+        }
+        
     }
 
     public void EnterLevel(int levelNum)
     {
-<<<<<<< HEAD:Assets/Scripts/Menu&Scene/MainMenu.cs
+
         Time.timeScale = 1f;//缓冲时间恢复游戏
-        SceneManager.LoadScene("LevelScene");
-=======
-        SceneManager.LoadScene("LevelScene" + levelNum.ToString());
->>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c:Assets/Scripts/Menu/MainMenu.cs
+        //SceneManager.LoadScene("LevelScene");
+        string name = "LevelScene" + levelNum.ToString();
+        UnityEngine.Debug.Log(name);
+        SceneManager.LoadScene(name);
+
     }
+
+    /*public void EnterSetting()
+    {
+        settingMenuUI.SetActive(true);
+        soundButton ??= GameObject.Find("SoundBtn").GetComponent<Button>();
+        quitButton ??= GameObject.Find("QuitBtn").GetComponent<Button>();
+        soundButton.onClick.AddListener(SwitchSound);
+        quitButton.onClick.AddListener(QuitGame);
+
+    }*/
 }

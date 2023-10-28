@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.SceneManagement;
-=======
 using UnityEngine.EventSystems;
 
->>>>>>> 1e8420077d650d4b2f4c3d24da4c50a4092f7b0c
 /// <summary>
 /// ÓÎÏ·ÖÐÊà
 /// </summary>
