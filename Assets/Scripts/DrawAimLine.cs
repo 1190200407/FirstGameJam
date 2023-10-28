@@ -6,7 +6,7 @@ public class DrawAimLine : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
-    private bool _isAiming = false;
+    private bool _isAiming = true;
     public bool IsAiming
     {
         get

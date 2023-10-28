@@ -90,20 +90,13 @@ public class Water : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.tag)
-        {
-            case "Cat":
-                GameCtr.instance.NowScore = math.min(GameCtr.instance.NowScore + 1, GameCtr.instance.GoalScore);
-                break;
-            case "Dog":
-                GameCtr.instance.NowScore = math.max(GameCtr.instance.NowScore - 1, 0);
-                break;
-            case "Chick":
-                break;
-        }
-        if (other.tag != "Water")
+        if (other.tag != "Water" && other.tag != "TurnPoint")
         {
             Destroy(gameObject);
+        }
+        if (other.TryGetComponent(out Animal animal) && !animal.isLeaving)
+        {
+            animal.OnWaterEnter();
         }
     }
 }

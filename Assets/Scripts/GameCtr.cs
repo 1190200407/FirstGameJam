@@ -9,6 +9,8 @@ public class GameCtr : MonoBehaviour
 {
     public static GameCtr instance;
 
+    public int levelNum;
+
     public WaterCtr waterCtr;
     public FollowingMouse followingMouse;
     public DrawAimLine drawAimLine;
@@ -77,19 +79,20 @@ public class GameCtr : MonoBehaviour
         {
             waterCtr.EndPouring();
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            drawAimLine.IsAiming = true;
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            drawAimLine.IsAiming = false;
-        }
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void OnLevelSuccess()
+    {
+
+    }
+
+    public void OnLevelFail()
+    {
+
     }
 }
