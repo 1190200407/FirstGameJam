@@ -21,8 +21,11 @@ public class Animal : MonoBehaviour
         get { return _direction; }
         set 
         {
-            _direction = value;
-            walkDist = 0f;
+            if (_direction != value)
+            {
+                _direction = value;
+                walkDist = 0f;
+            }
         }
     }
     public float walkDist = 0f;
@@ -47,12 +50,13 @@ public class Animal : MonoBehaviour
     /// </summary>
     public virtual void Init()
     {
+        Capa = UnityEngine.Random.Range(Setting.waterCapa - Setting.waterCapaBias, Setting.waterCapa + Setting.waterCapaBias + 1);
+        CurFill = 0;
         ChangeNowAction(GetAnAction());
     }
 
     public void ChangeNowAction(AnimalAction act)
     {
-        Debug.Log(act.GetType().Name);
         action = act;
         if (act == null) return;
         action.host = this;
@@ -83,7 +87,7 @@ public class Animal : MonoBehaviour
     /// </summary>
     public void TurnCheck()
     {
-        if (walkDist > Setting.trunCheckDist && UnityEngine.Random.value < Setting.trunCheckProb)
+        if (walkDist > Setting.turnCheckDist && UnityEngine.Random.value < Setting.turnCheckProb)
         {
             Direction = -Direction;
         }
@@ -108,6 +112,7 @@ public class Animal : MonoBehaviour
     public virtual void OnWaterFull()
     {
         isLeaving = true;
+        GetComponent<Collider2D>().enabled = false;
         GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterFullScore, 0, GameCtr.instance.GoalScore);
     }
 }

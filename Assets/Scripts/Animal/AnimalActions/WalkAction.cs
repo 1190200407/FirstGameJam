@@ -20,7 +20,7 @@ public class WalkAction : AnimalAction
     {
         //移动
         host.transform.position += Vector3.right * host.Direction * speed * Time.deltaTime * 0.1f;
-        host.walkDist += speed * Time.deltaTime * 0.1f;
+        host.walkDist += speed * Time.deltaTime * 0.5f;
 
         //减少计时
         time -= Time.deltaTime;

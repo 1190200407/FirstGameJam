@@ -29,9 +29,13 @@ public class WaterCtr : MonoBehaviour
     public float waterSurviveTime = 5f;
     [Header("等待多少秒开始加速")]
     public float waterWaitForSpeedUpTime = 1f;
+    [Header("等待多少秒开始减速")]
+    public float waterWaitForSpeedDownTime = 0.2f;
 
     public float WaterInitialSpeed {  get; private set; }
     public Vector3 WaterDir => GetComponent<SpriteRenderer>().flipX ? -transform.right : transform.right;
+
+    private float acc = 0f;
 
     private void Start()
     {
@@ -54,7 +58,7 @@ public class WaterCtr : MonoBehaviour
     {
         yield return new WaitForSeconds(waterWaitForSpeedUpTime);
 
-        float acc = 0f;
+        acc = 0f;
         while (IsOpen)
         {
             yield return null;
@@ -63,9 +67,22 @@ public class WaterCtr : MonoBehaviour
         }
     }
 
+    public IEnumerator WaterSpeedDown()
+    {
+        yield return new WaitForSeconds(waterWaitForSpeedDownTime);
+
+        while (!IsOpen)
+        {
+            yield return null;
+            acc = Mathf.Max(acc - Time.deltaTime * waterAcceleration, 0.1f);
+            WaterInitialSpeed = Mathf.Max(WaterInitialSpeed - acc * Time.deltaTime, waterMinInitialSpeed);
+        }
+    }
+
     public void StartPouring()
     {
         IsOpen = true;
+        StopAllCoroutines();
         StartCoroutine(MakeWater());
         StartCoroutine(WaterSpeedUp());
     }
@@ -74,6 +91,6 @@ public class WaterCtr : MonoBehaviour
     {
         IsOpen = false;
         StopAllCoroutines();
-        WaterInitialSpeed = waterMinInitialSpeed;
+        StartCoroutine(WaterSpeedDown());
     }
 }

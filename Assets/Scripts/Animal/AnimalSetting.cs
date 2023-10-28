@@ -45,9 +45,9 @@ public class AnimalSetting : MonoBehaviour
     [Header("动物转向判定时间")]
     public float turnCheckTime;
     [Header("动物转向概率")]
-    public float trunCheckProb;
+    public float turnCheckProb;
     [Header("动物至少移动多少距离才能转向判定")]
-    public float trunCheckDist;
+    public float turnCheckDist;
 
     [Space(40)]
     [Header("动物滴到水时得到的分数")]
