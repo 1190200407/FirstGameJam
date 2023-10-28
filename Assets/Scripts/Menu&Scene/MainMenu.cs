@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
             for (int i = 0; i < 4; i++)
                 levelButtons.Add(GameObject.Find("levelBtn" + i.ToString()).GetComponent<Button>());
         }
-        soundButton ??= GameObject.Find("SoundBtn").GetComponent<Button>();
+        soundButton ??= GameObject.Find("MusicBtn").GetComponent<Button>();
         quitButton ??= GameObject.Find("QuitBtn").GetComponent<Button>();
         //Ìí¼Ó¼àÌý
         soundButton.onClick.AddListener(SwitchSound);
