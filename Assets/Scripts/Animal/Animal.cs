@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 动物基类脚本
@@ -30,7 +31,20 @@ public class Animal : MonoBehaviour
     }
     public float walkDist = 0f;
 
-    public int CurFill { get; set; }
+    private int _curFill = 0;
+    public int CurFill
+    {
+        get { return _curFill; }
+        set
+        {
+            _curFill = value;
+            if (Capa != 0)
+            {
+                Color oldColor = GetComponent<SpriteRenderer>().color;
+                GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 0.3f + ((float)_curFill / Capa) * 0.7f);
+            }
+        }
+    }
     public int Capa { get; set; }
 
     private void Update()
@@ -52,6 +66,7 @@ public class Animal : MonoBehaviour
     {
         Capa = UnityEngine.Random.Range(-Setting.waterCapaBias, Setting.waterCapaBias + 1) + Setting.waterCapa;
         CurFill = 0;
+
         ChangeNowAction(GetAnAction());
     }
 
@@ -114,5 +129,6 @@ public class Animal : MonoBehaviour
         isLeaving = true;
         GetComponent<Collider2D>().enabled = false;
         GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterFullScore, 0, GameCtr.instance.GoalScore);
+        Destroy(gameObject, 0.1f);
     }
 }
