@@ -14,6 +14,7 @@ public class GameCtr : MonoBehaviour
     public WaterCtr waterCtr;
     public FollowingMouse followingMouse;
     public DrawAimLine drawAimLine;
+    public EnergyBar energyBar;
 
     public UIMgr uiMgr;
     public AnimalMgr anmMgr;
@@ -54,7 +55,7 @@ public class GameCtr : MonoBehaviour
         waterCtr ??= GameObject.Find("WaterPot").GetComponent<WaterCtr>();
         followingMouse ??= GameObject.Find("WaterPot").GetComponent<FollowingMouse>();
         drawAimLine ??= GameObject.Find("Aimline").GetComponent<DrawAimLine>();
-
+        energyBar ??= GameObject.Find("EnergyBar").GetComponent<EnergyBar>();
         uiMgr ??= GetComponent<UIMgr>();
         anmMgr ??= GetComponent<AnimalMgr>();
 

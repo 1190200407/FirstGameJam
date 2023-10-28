@@ -40,7 +40,7 @@ public class WaterCtr : MonoBehaviour
 
     public IEnumerator MakeWater()
     {
-        while (IsOpen)
+        while (IsOpen && !GameCtr.instance.energyBar.isEmpty)
         {
             GameObject newDrop = Instantiate(waterPrefab, transform.position, Quaternion.identity, waterParent.transform);
             newDrop.GetComponent<Water>().surviveTime = waterSurviveTime;

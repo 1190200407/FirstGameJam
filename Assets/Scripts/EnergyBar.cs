@@ -5,11 +5,11 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EngergyBar : MonoBehaviour
+public class EnergyBar : MonoBehaviour
 {
-    public WaterCtr waterCtr;
     public Slider energySlider;
     public float dePerSec = 10.0f;//decrease amount every time delta;
+    public bool isEmpty {  get; private set; }
 
     void ChangeEnergy(float amount)
     {
@@ -18,20 +18,22 @@ public class EngergyBar : MonoBehaviour
 
     void Start()
     {
+        energySlider = GetComponent<Slider>();
         energySlider.value = energySlider.maxValue;
+        isEmpty = false;
     }
 
     void Update()
     {
-        if (waterCtr.IsOpen)
+        if (GameCtr.instance.waterCtr.IsOpen)
         {
-            UnityEngine.Debug.Log("pot is open");
+            //UnityEngine.Debug.Log("pot is open");
             ChangeEnergy(dePerSec * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (energySlider.value <= 0.05f && !isEmpty)
         {
-            UnityEngine.Debug.Log("space key was pressed");
-            ChangeEnergy(dePerSec * Time.deltaTime);
+            UnityEngine.Debug.Log("should close");
+            isEmpty = true;
         }
     }
 

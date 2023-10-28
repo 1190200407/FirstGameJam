@@ -616,7 +616,6 @@ GameObject:
   - component: {fileID: 708658542}
   - component: {fileID: 708658541}
   - component: {fileID: 708658540}
-  - component: {fileID: 708658544}
   m_Layer: 0
   m_Name: ScriptMgr (1)
   m_TagString: Untagged
@@ -668,6 +667,7 @@ MonoBehaviour:
   waterCtr: {fileID: 0}
   followingMouse: {fileID: 1577970721}
   drawAimLine: {fileID: 0}
+  energyBar: {fileID: 1638378304}
   uiMgr: {fileID: 0}
   anmMgr: {fileID: 0}
 --- !u!4 &708658543
@@ -686,21 +686,6 @@ Transform:
   - {fileID: 342356573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &708658544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708658539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f8c8b1d00671b40a346aedb49d8094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterCtr: {fileID: 1577970722}
-  energySlider: {fileID: 1638378303}
-  dePerSec: 10
 --- !u!1 &731231197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,8 +1732,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1638378301}
   - component: {fileID: 1638378303}
+  - component: {fileID: 1638378304}
   m_Layer: 5
-  m_Name: EngergyBar
+  m_Name: EnergyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1827,6 +1813,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1638378304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638378300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f8c8b1d00671b40a346aedb49d8094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energySlider: {fileID: 0}
+  dePerSec: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
