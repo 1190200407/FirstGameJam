@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
@@ -89,9 +90,13 @@ public class Water : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Water")
+        if (other.tag != "Water" && other.tag != "TurnPoint")
         {
             Destroy(gameObject);
+        }
+        if (other.TryGetComponent(out Animal animal) && !animal.isLeaving)
+        {
+            animal.OnWaterEnter();
         }
     }
 }

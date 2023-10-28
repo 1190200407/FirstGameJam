@@ -2,28 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ”Œœ∑÷– ‡
+/// </summary>
 public class GameCtr : MonoBehaviour
 {
     public static GameCtr instance;
+
+    public int levelNum;
 
     public WaterCtr waterCtr;
     public FollowingMouse followingMouse;
     public DrawAimLine drawAimLine;
 
+    public UIMgr uiMgr;
+    public AnimalMgr anmMgr;
+
+    private int _nowScore = 0;
+    public int NowScore
+    { 
+        get { return _nowScore; } 
+        set 
+        {
+            _nowScore = value;
+            uiMgr.OnScoreChange(value);
+        }
+    }
+
+    private int _goalScore = 1;
+    public int GoalScore
+    {
+        get { return _goalScore; }
+        set
+        {
+            _goalScore = value;
+            uiMgr.OnGoalChange(value);
+        }
+    }
+
     private void Awake()
     {
         if (instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(instance);
         }
         instance = this;
     }
 
-    void Start()
+    IEnumerator Start()
     {
         waterCtr ??= GameObject.Find("WaterPot").GetComponent<WaterCtr>();
         followingMouse ??= GameObject.Find("WaterPot").GetComponent<FollowingMouse>();
         drawAimLine ??= GameObject.Find("Aimline").GetComponent<DrawAimLine>();
+
+        uiMgr ??= GetComponent<UIMgr>();
+        anmMgr ??= GetComponent<AnimalMgr>();
+
+        yield return null;
+        Init();
+    }
+
+
+    private void Init()
+    {
+        NowScore = 0;
+        GoalScore = 100;
     }
 
     void Update()
@@ -36,19 +79,20 @@ public class GameCtr : MonoBehaviour
         {
             waterCtr.EndPouring();
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            drawAimLine.IsAiming = true;
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            drawAimLine.IsAiming = false;
-        }
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void OnLevelSuccess()
+    {
+
+    }
+
+    public void OnLevelFail()
+    {
+
     }
 }
