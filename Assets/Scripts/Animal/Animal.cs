@@ -50,7 +50,7 @@ public class Animal : MonoBehaviour
     /// </summary>
     public virtual void Init()
     {
-        Capa = UnityEngine.Random.Range(Setting.waterCapa - Setting.waterCapaBias, Setting.waterCapa + Setting.waterCapaBias + 1);
+        Capa = UnityEngine.Random.Range(-Setting.waterCapaBias, Setting.waterCapaBias + 1) + Setting.waterCapa;
         CurFill = 0;
         ChangeNowAction(GetAnAction());
     }

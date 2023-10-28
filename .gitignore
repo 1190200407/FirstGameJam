@@ -11,6 +11,7 @@
 ExportedObj/
 *.csproj
 *.unityproj
+*.vs
 *.sln
 *.suo
 *.tmp
@@ -34,3 +35,5 @@ sysinfo.txt
 =======
 *.zip
 >>>>>>> d0ad3ca481d5b57f720718cebb6da3bf067b5454
+*.vsidx
+*.log
