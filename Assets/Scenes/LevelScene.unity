@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880d86bbfdc006f45ac91ef4b6679118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: -1
 --- !u!50 &333096357
 Rigidbody2D:
   serializedVersion: 4
@@ -299,8 +300,8 @@ MonoBehaviour:
   runMinDist: 0
   runMaxDist: 0
   turnCheckTime: 1.5
-  trunCheckProb: 0.25
-  trunCheckDist: 50
+  turnCheckProb: 0.25
+  turnCheckDist: 50
   waterEnterScore: 4
   waterFullScore: 0
   waterCapa: 7
@@ -927,8 +928,8 @@ MonoBehaviour:
   runMinDist: 0
   runMaxDist: 0
   turnCheckTime: 2
-  trunCheckProb: 0.2
-  trunCheckDist: 40
+  turnCheckProb: 0.2
+  turnCheckDist: 40
   waterEnterScore: 1
   waterFullScore: 2
   waterCapa: 10
@@ -1240,6 +1241,7 @@ MonoBehaviour:
   waterGravity: 1
   waterSurviveTime: 5
   waterWaitForSpeedUpTime: 0.2
+  waterWaitForSpeedDownTime: 0.2
 --- !u!114 &833493332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1747,8 +1749,8 @@ MonoBehaviour:
   runMinDist: 10
   runMaxDist: 25
   turnCheckTime: 1
-  trunCheckProb: 0.2
-  trunCheckDist: 25
+  turnCheckProb: 0.2
+  turnCheckDist: 25
   waterEnterScore: 2
   waterFullScore: 4
   waterCapa: 15
@@ -1877,6 +1879,7 @@ GameObject:
   - component: {fileID: 1617551249}
   - component: {fileID: 1617551250}
   - component: {fileID: 1617551251}
+  - component: {fileID: 1617551252}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Dog
@@ -1986,6 +1989,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1617551252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617551248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53490a1923d8be6418eeeac8b9005f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActing: 0
+  isLeaving: 0
+  walkDist: 0
 --- !u!1 &1956254015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880d86bbfdc006f45ac91ef4b6679118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
 --- !u!50 &1956254019
 Rigidbody2D:
   serializedVersion: 4

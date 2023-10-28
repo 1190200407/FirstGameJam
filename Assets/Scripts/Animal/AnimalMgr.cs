@@ -20,6 +20,9 @@ public class AnimalMgr : MonoBehaviour
         {
             settings[setting.animalName] = setting;
         }
-        GameObject.Find("Cat").GetComponent<Animal>().Init();
+        foreach (var animal in FindObjectsOfType<Animal>())
+        {
+            animal.Init();
+        }
     }
 }

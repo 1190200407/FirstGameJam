@@ -19,6 +19,7 @@ public class GameCtr : MonoBehaviour
     public AnimalMgr anmMgr;
 
     private int _nowScore = 0;
+
     public int NowScore
     { 
         get { return _nowScore; } 
