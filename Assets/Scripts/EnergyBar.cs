@@ -41,7 +41,7 @@ public class EnergyBar : MonoBehaviour
     {
         dePerSec = amount;
     }
-
+    
     public void SetMaxEnergy(float newMaxEnergy)
     {
 

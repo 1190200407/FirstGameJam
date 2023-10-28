@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject settingMenuUI;
-    public GameObject pauseMenuUI;
+    //public GameObject pauseMenuUI;
 
     bool isLevel0Pass = false;
     bool isLevel1Pass = false;
@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         settingMenuUI.SetActive(false);
-        pauseMenuUI.SetActive(false);
+        //pauseMenuUI.SetActive(false);
     }
     public void QuitGame()
     {
@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public void EnterLevel0()
     {
+        Time.timeScale = 1f;//ª∫≥Â ±º‰ª÷∏¥”Œœ∑
         SceneManager.LoadScene("LevelScene");
     }
 

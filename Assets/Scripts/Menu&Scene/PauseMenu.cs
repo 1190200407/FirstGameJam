@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
-
+    private static string mainMenu = "UIDemo";
     public GameObject pauseMenuUI;
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;//¡¢øÃ‘›Õ£”Œœ∑
@@ -43,13 +43,16 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("UIDemo");
     }
 
     public void Restart()
     {
         UnityEngine.Debug.Log("restart current game...");
-        SceneManager.LoadScene("LevelScene");
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;//ª∫≥Â ±º‰ª÷∏¥”Œœ∑
+        isGamePaused = false;
+        SceneManager.LoadScene(GameCtr.instance.currentScene.name);
     }
 
     public void QuitGame()
