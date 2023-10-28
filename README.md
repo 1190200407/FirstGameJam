@@ -1,11 +1,11 @@
 # GameJam in master 修改说明
 > ljy
 
-1. >[!BUG]
+1. >[!WARNING]
    >WinScene中的所有Button没有交互反应
-2. >[!TODO]
+2. >[!NOTE]
    >进入WinScene条件判定
-3. >[!TODO]
+3. >[!NOTE]
    > 从WinScene进入下一关的代码实现
   
    统计当前通过关卡的变量应该放在哪个类，用什么方式访问比较合理？
