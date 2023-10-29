@@ -2,20 +2,11 @@
 > ljy
 
 1. >[!WARNING]
-   >WinScene中的所有Button没有交互反应
+   >
+   >获取当前关卡以确定使用List中的哪一条说明
 2. >[!NOTE]
-   >进入WinScene条件判定
+   >添加关卡说明板淡入淡出特效
 3. >[!NOTE]
-   > 从WinScene进入下一关的代码实现
+   > 添加文字水波纹特效
   
-   统计当前通过关卡的变量应该放在哪个类，用什么方式访问比较合理？
 
-   MainMenu中的`PlayerPrefs`获取的是当前scene层数还是通过的level数？
-   ```c#
-   public void SetLevelButtons()
-    {
-        int nowLevel = PlayerPrefs.GetInt("ClearLevels", 0);
-        for (int i = 0; i < levelButtons.Count; i++)
-            levelButtons[i].interactable = i <= nowLevel;
-    }
-   ```
