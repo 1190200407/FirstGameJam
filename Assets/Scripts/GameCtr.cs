@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 /// <summary>
@@ -9,7 +10,8 @@ using UnityEngine.EventSystems;
 public class GameCtr : MonoBehaviour
 {
     public static GameCtr instance;
-
+    public PauseMenu pauseMenu;
+    public Scene currentScene { get; private set; }
     public int levelNum;
 
     public WaterCtr waterCtr;
@@ -19,6 +21,8 @@ public class GameCtr : MonoBehaviour
 
     public UIMgr uiMgr;
     public AnimalMgr anmMgr;
+
+    //public List<bool> isLevelPass = new List<bool>({false, false, false, false});
 
     private int _nowScore = 0;
 
@@ -54,6 +58,8 @@ public class GameCtr : MonoBehaviour
 
     IEnumerator Start()
     {
+        pauseMenu.pauseMenuUI.SetActive(false);
+        currentScene = SceneManager.GetActiveScene();
         waterCtr ??= GameObject.Find("WaterPot").GetComponent<WaterCtr>();
         followingMouse ??= GameObject.Find("WaterPot").GetComponent<FollowingMouse>();
         drawAimLine ??= GameObject.Find("Aimline").GetComponent<DrawAimLine>();
@@ -90,12 +96,13 @@ public class GameCtr : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        pauseMenu.Pause();
     }
 
     public void OnLevelSuccess()
     {
-
+        UnityEngine.Debug.Log("next level");
+        SceneManager.LoadScene("AsyncLoad");
     }
 
     public void OnLevelFail()
