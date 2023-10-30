@@ -7,6 +7,8 @@ public class LieAction : AnimalAction
     public float time = 0f;
     public override void OnActionStart()
     {
+        host.PlayAnim("Lie");
+
         int levelNum = GameCtr.instance.levelNum;
         float minTime = Setting.lieMinTime;
         float maxTime = Setting.lieMaxTime;

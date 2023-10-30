@@ -10,11 +10,17 @@ using UnityEngine.UI;
 /// </summary>
 public class Animal : MonoBehaviour
 {
+    public AnimalAction nextAction;
     public AnimalSetting Setting => GameCtr.instance.anmMgr.settings[tag];
+    public AudioSource audioSource;
+    public Animator animator;
 
     public AnimalAction action;
     public bool isActing = false;
     public bool isLeaving = false;
+    public string animName;
+
+    public bool sfxCooldown = false;
 
     private int _direction = 1;
     public int Direction
@@ -47,7 +53,13 @@ public class Animal : MonoBehaviour
     }
     public int Capa { get; set; }
 
-    private void Update()
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    protected virtual void Update()
     {
         if (isActing)
         {
@@ -68,6 +80,23 @@ public class Animal : MonoBehaviour
         CurFill = 0;
 
         ChangeNowAction(GetAnAction());
+    }
+
+    public void PlayAnim(string animName)
+    {
+        if (animator != null)
+        {
+            animator.Play(animName);
+            if (animName == "SitDown")
+                this.animName = "Sit";
+            else
+                this.animName = animName;
+        }
+    }
+
+    public virtual void OnAngryEnd()
+    {
+        animator.Play(animName);
     }
 
     public void ChangeNowAction(AnimalAction act)
@@ -113,12 +142,30 @@ public class Animal : MonoBehaviour
     /// </summary>
     public virtual void OnWaterEnter()
     {
+        if (animator != null)
+        {
+            animator.Play("Angry");
+        }
+
         if (isLeaving) return;
         CurFill++;
         if (CurFill == Capa)
             OnWaterFull();
 
-        GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterEnterScore, 0, GameCtr.instance.GoalScore);
+        if (!sfxCooldown)
+        {
+            audioSource.Play();
+            StartCoroutine(SfxCoolDown(UnityEngine.Random.Range(2f, 4f)));
+        }
+
+        GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterEnterScore, 0, GameCtr.instance.goalScore);
+    }
+
+    public IEnumerator SfxCoolDown(float time)
+    {
+        sfxCooldown = true;
+        yield return new WaitForSeconds(time);
+        sfxCooldown = false;
     }
 
     /// <summary>
@@ -128,7 +175,10 @@ public class Animal : MonoBehaviour
     {
         isLeaving = true;
         GetComponent<Collider2D>().enabled = false;
-        GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterFullScore, 0, GameCtr.instance.GoalScore);
-        Destroy(gameObject, 0.1f);
+        GameCtr.instance.NowScore = math.clamp(GameCtr.instance.NowScore + Setting.waterFullScore, 0, GameCtr.instance.goalScore);
+
+        audioSource.Play();
+
+        GameCtr.instance.anmMgr.animalCount[name]--;
     }
 }

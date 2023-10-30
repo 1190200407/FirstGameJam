@@ -10,6 +10,8 @@ public class RunAction : AnimalAction
     private float turnCheckTime = 0f;
     public override void OnActionStart()
     {
+        host.PlayAnim("Run");
+
         int levelNum = GameCtr.instance.levelNum;
         speed = Setting.runSpeed;
         time = Random.Range(Setting.runMinTime, Setting.runMaxTime - levelNum);
@@ -18,6 +20,10 @@ public class RunAction : AnimalAction
 
     public override void Act()
     {
+        //×ªÏò
+        if (Mathf.Abs(host.transform.localScale.x + host.Direction) > Mathf.Epsilon)
+            host.transform.localScale = new Vector3(-host.Direction, 1f, 1f);
+
         //ÒÆ¶¯
         host.transform.position += Vector3.right * host.Direction * speed * Time.deltaTime * 0.1f;
         host.walkDist += speed * Time.deltaTime * 0.5f;

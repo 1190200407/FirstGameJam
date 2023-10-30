@@ -7,15 +7,6 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class MainMenu : MonoBehaviour
 {
-
-    //public GameObject settingMenuUI;
-    //public GameObject pauseMenuUI;
-
-    bool isLevel0Pass = false;
-    bool isLevel1Pass = false;
-    bool isLevel2Pass = false;
-    bool isLevel3Pass = false;
-
     public List<Button> levelButtons;
     public Button soundButton;
     public Button quitButton;
@@ -23,11 +14,11 @@ public class MainMenu : MonoBehaviour
     public Sprite muOffImg;
     public static bool isMuOn = true;
 
+    public AudioSource bgAudioSource;
+    public AudioSource sfxAudioSource;
+
     void Start()
     {
-
-        //settingMenuUI.SetActive(false);
-        //pauseMenuUI.SetActive(false);
         //»ñÈ¡UI
         if (levelButtons == null || levelButtons.Count == 0)
         {
@@ -36,6 +27,7 @@ public class MainMenu : MonoBehaviour
                 levelButtons.Add(GameObject.Find("levelBtn" + i.ToString()).GetComponent<Button>());
         }
         soundButton ??= GameObject.Find("MusicBtn").GetComponent<Button>();
+
         quitButton ??= GameObject.Find("QuitBtn").GetComponent<Button>();
         //Ìí¼Ó¼àÌý
         soundButton.onClick.AddListener(SwitchSound);
@@ -47,8 +39,11 @@ public class MainMenu : MonoBehaviour
             {
                 EnterLevel(levelButtons.IndexOf(button));
             });
-        
 
+        isMuOn = PlayerPrefs.GetInt("IsMuOn", 0) == 0;
+        soundButton.GetComponent<UnityEngine.UI.Image>().sprite = isMuOn ? muOnImg : muOffImg;
+        bgAudioSource.enabled = isMuOn;
+        sfxAudioSource.enabled = isMuOn;
     }
 
     /// <summary>
@@ -71,20 +66,21 @@ public class MainMenu : MonoBehaviour
         if (isMuOn)
         {
             isMuOn = false;
-            //shut down music//
-            UnityEngine.Debug.Log("shut down music"+isMuOn);
             soundButton.GetComponent<UnityEngine.UI.Image>().sprite = muOffImg;
-            return;
         }
         else
         {
             isMuOn = true;
-            //turn on music//
-            UnityEngine.Debug.Log("turn on music"+isMuOn);
             soundButton.GetComponent<UnityEngine.UI.Image>().sprite = muOnImg;
-            return;
         }
-        
+
+        PlayerPrefs.SetInt("IsMuOn", isMuOn ? 0 : 1);
+        if (isMuOn && !bgAudioSource.enabled)
+        {
+            bgAudioSource.enabled = true;
+        }
+        bgAudioSource.volume = isMuOn ? 1f : 0f;
+        sfxAudioSource.enabled = isMuOn;
     }
 
     public void EnterLevel(int levelNum)

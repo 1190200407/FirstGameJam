@@ -32,8 +32,8 @@ public class EnergyBar : MonoBehaviour
         }
         if (energySlider.value <= 0.05f && !isEmpty)
         {
-            UnityEngine.Debug.Log("should close");
             isEmpty = true;
+            StartCoroutine(GameCtr.instance.OnLevelFail());
         }
     }
 

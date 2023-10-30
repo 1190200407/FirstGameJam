@@ -29,6 +29,10 @@ public class FlyAction : AnimalAction
     {
         time += Time.deltaTime;
 
+        //×ªÏò
+        if (Mathf.Abs(host.transform.localScale.x + host.Direction) > Mathf.Epsilon)
+            host.transform.localScale = new Vector3(-host.Direction, 1f, 1f);
+
         if (status == 0)
         {
             host.transform.position += Vector3.up * flyUpSpeed * Time.deltaTime * 0.1f;

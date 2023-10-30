@@ -7,6 +7,8 @@ public class StandAction : AnimalAction
     public float time = 0f;
     public override void OnActionStart()
     {
+        host.PlayAnim("SitDown");
+
         int levelNum = GameCtr.instance.levelNum;
         float minTime = Setting.standMinTime;
         float maxTime = Setting.standMaxTime;

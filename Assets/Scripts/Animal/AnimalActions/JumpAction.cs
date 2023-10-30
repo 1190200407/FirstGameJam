@@ -13,6 +13,8 @@ public class JumpAction : AnimalAction
     public Vector3 endPoint;
     public override void OnActionStart()
     {
+        host.PlayAnim("Jump");
+
         dist = Random.Range(2f, 3.5f);
         startPoint = host.transform.position;
         endPoint = host.transform.position + dist * host.Direction * Vector3.right;
@@ -20,6 +22,9 @@ public class JumpAction : AnimalAction
         jumpHeight = Random.Range(1.5f, 1.7f);
         totTime = dist / 3f;
         nowTime = 0;
+
+        if (Mathf.Abs(host.transform.localScale.x + host.Direction) > Mathf.Epsilon)
+            host.transform.localScale = new Vector3(-host.Direction, 1f, 1f);
     }
 
     public override void Act()

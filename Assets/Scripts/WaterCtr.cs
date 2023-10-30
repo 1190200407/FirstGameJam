@@ -33,7 +33,7 @@ public class WaterCtr : MonoBehaviour
     public float waterWaitForSpeedDownTime = 0.2f;
 
     public float WaterInitialSpeed {  get; private set; }
-    public Vector3 WaterDir => GetComponent<SpriteRenderer>().flipX ? -transform.right : transform.right;
+    public Vector3 WaterDir => transform.parent.GetComponent<SpriteRenderer>().flipX ? -transform.right : transform.right;
 
     private float acc = 0f;
 
@@ -50,6 +50,7 @@ public class WaterCtr : MonoBehaviour
             newDrop.GetComponent<Water>().surviveTime = waterSurviveTime;
             newDrop.GetComponent<Water>().SetSpeed(WaterInitialSpeed, WaterDir);
             newDrop.GetComponent<Rigidbody2D>().gravityScale = waterGravity;
+            GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(waterMakingInternal);
         }
     }

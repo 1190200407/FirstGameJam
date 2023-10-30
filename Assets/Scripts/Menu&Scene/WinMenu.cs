@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,47 +8,42 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class WinMenu : MonoBehaviour
 {
-    public Button nextBtn;
-    public Button restartBtn;
-    public Button quitBtn;
-    public Button menuBtn;
+    public GameObject WinMenuUI;
+    public GameObject FailMenuUI;
+
     // Start is called before the first frame update
     void Start()
     {
-        /*nextBtn ??= GameObject.Find("NextBtn").GetComponent<Button>();
-        restartBtn ??= GameObject.Find("RestartBtn").GetComponent<Button>();
-        quitBtn ??= GameObject.Find("QuitBtn").GetComponent<Button>();
-        menuBtn ??= GameObject.Find("MenuBtn").GetComponent<Button>();
+        WinMenuUI.SetActive(false);
+        FailMenuUI.SetActive(false);
+    }
 
-        //ÃÌº”º‡Ã˝
-        nextBtn.onClick.AddListener(NextLevel);
-        restartBtn.onClick.AddListener(Restart);
-        quitBtn.onClick.AddListener(QuitGame);
-        menuBtn.onClick.AddListener(LoadMenu);*/
+    public void OpenWinMenu()
+    {
+        WinMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void OpenFailMenu()
+    {
+        FailMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void NextLevel()
     {
         Time.timeScale = 1f;//ª∫≥Â ±º‰ª÷∏¥”Œœ∑
         //SceneManager.LoadScene("LevelScene");
-        int nowLevel = PlayerPrefs.GetInt("ClearLevels", 0);
-        int nextLevel = nowLevel + 1;
-        string name = "LevelScene" + nextLevel.ToString();
-        UnityEngine.Debug.Log(name);
-        SceneManager.LoadScene(name);
-    }
-    public void Restart()
-    {
-        UnityEngine.Debug.Log("restart current game...");
-        Time.timeScale = 1f;//ª∫≥Â ±º‰ª÷∏¥”Œœ∑
-        SceneManager.LoadScene(GameCtr.instance.currentScene.name);
-    }
-    public void QuitGame()
-    {
-        UnityEngine.Application.Quit();
-    }
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("UIDemo");
+        int nowLevel = GameCtr.instance.levelNum;
+        if (nowLevel != 3)
+        {
+            int nextLevel = nowLevel + 1;
+            name = "LevelScene" + nextLevel.ToString();
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            GameCtr.instance.pauseMenu.LoadMenu();
+        }
     }
 }

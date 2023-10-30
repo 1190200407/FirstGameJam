@@ -20,6 +20,8 @@ public class Water : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        transform.up = -GetComponent<Rigidbody2D>().velocity; 
     }
 
     public void SetSpeed(float speed, Vector3 dir)
@@ -90,7 +92,7 @@ public class Water : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Water" && other.tag != "TurnPoint")
+        if (other.tag != "Water" && other.tag != "NotTakeWater" && other.tag != "TurnPoint")
         {
             Destroy(gameObject);
         }

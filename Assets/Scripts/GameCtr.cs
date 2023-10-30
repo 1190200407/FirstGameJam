@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Newtonsoft.Json.Linq;
 
 /// <summary>
 /// 游戏中枢
@@ -11,8 +12,8 @@ public class GameCtr : MonoBehaviour
 {
     public static GameCtr instance;
     public PauseMenu pauseMenu;
+    public WinMenu winMenu;
     public Scene currentScene { get; private set; }
-    public int levelNum;
 
     public WaterCtr waterCtr;
     public FollowingMouse followingMouse;
@@ -22,8 +23,6 @@ public class GameCtr : MonoBehaviour
     public UIMgr uiMgr;
     public AnimalMgr anmMgr;
 
-    //public List<bool> isLevelPass = new List<bool>({false, false, false, false});
-
     private int _nowScore = 0;
 
     public int NowScore
@@ -31,21 +30,23 @@ public class GameCtr : MonoBehaviour
         get { return _nowScore; } 
         set 
         {
-            _nowScore = value;
             uiMgr.OnScoreChange(value);
+
+            if (_nowScore != goalScore)
+            {
+                _nowScore = value;
+                if (_nowScore == goalScore)
+                {
+                    StartCoroutine(OnLevelSuccess());
+                }
+            }
         }
     }
 
-    private int _goalScore = 1;
-    public int GoalScore
-    {
-        get { return _goalScore; }
-        set
-        {
-            _goalScore = value;
-            uiMgr.OnGoalChange(value);
-        }
-    }
+    [Header("关卡号")]
+    public int levelNum;
+    [Header("目标分数")]
+    public int goalScore = 1;
 
     private void Awake()
     {
@@ -58,14 +59,17 @@ public class GameCtr : MonoBehaviour
 
     IEnumerator Start()
     {
-        pauseMenu.pauseMenuUI.SetActive(false);
         currentScene = SceneManager.GetActiveScene();
-        waterCtr ??= GameObject.Find("WaterPot").GetComponent<WaterCtr>();
+        waterCtr ??= GameObject.Find("WaterStart").GetComponent<WaterCtr>();
         followingMouse ??= GameObject.Find("WaterPot").GetComponent<FollowingMouse>();
         drawAimLine ??= GameObject.Find("Aimline").GetComponent<DrawAimLine>();
         energyBar ??= GameObject.Find("EnergyBar").GetComponent<EnergyBar>();
         uiMgr ??= GetComponent<UIMgr>();
         anmMgr ??= GetComponent<AnimalMgr>();
+
+        pauseMenu ??= GetComponent<PauseMenu>();
+        winMenu ??= GetComponent<WinMenu>();
+        pauseMenu.pauseMenuUI.SetActive(false);
 
         yield return null;
         Init();
@@ -75,7 +79,7 @@ public class GameCtr : MonoBehaviour
     private void Init()
     {
         NowScore = 0;
-        GoalScore = 100;
+        uiMgr.OnGoalChange(goalScore);
     }
 
     void Update()
@@ -99,14 +103,22 @@ public class GameCtr : MonoBehaviour
         pauseMenu.Pause();
     }
 
-    public void OnLevelSuccess()
+    public IEnumerator OnLevelSuccess()
     {
-        UnityEngine.Debug.Log("next level");
-        SceneManager.LoadScene("AsyncLoad");
+        pauseMenu.CanPause = false;
+        yield return new WaitForSecondsRealtime(2.5f);
+
+        PlayerPrefs.SetInt("ClearLevels", levelNum + 1);
+        winMenu.OpenWinMenu();
+
     }
 
-    public void OnLevelFail()
+    public IEnumerator OnLevelFail()
     {
+        pauseMenu.CanPause = false;
+        yield return new WaitForSecondsRealtime(2.5f);
 
+        PlayerPrefs.SetInt("ClearLevels", levelNum + 1);
+        winMenu.OpenFailMenu();
     }
 }

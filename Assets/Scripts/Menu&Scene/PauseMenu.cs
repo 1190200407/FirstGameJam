@@ -8,7 +8,20 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
-    private static string mainMenu = "UIDemo";
+    private bool _canPause = true;
+    public bool CanPause
+    { 
+        get { return _canPause; } 
+        set 
+        { 
+            _canPause = value; 
+            if (!value && isGamePaused)
+            {
+                Resume();
+            }
+        }
+    }
+    private static string mainMenu = "StartMenu";
     public GameObject pauseMenuUI;
 
     private void Start()
@@ -37,6 +50,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if (!_canPause) return;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;//¡¢øÃ‘›Õ£”Œœ∑
         isGamePaused = true;
@@ -44,12 +58,11 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("UIDemo");
+        SceneManager.LoadScene(mainMenu);
     }
 
     public void Restart()
     {
-
         UnityEngine.Debug.Log("restart current game...");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;//ª∫≥Â ±º‰ª÷∏¥”Œœ∑
@@ -61,8 +74,5 @@ public class PauseMenu : MonoBehaviour
     {
         UnityEngine.Debug.Log("quitting game...");
         Application.Quit();
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 }
