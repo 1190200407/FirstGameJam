@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c767b4ece8a44408d14f9b5984b492, type: 3}
+  m_Name: Level5
+  m_EditorClassIdentifier: 
+  levelId: 5
+  levelName: 
+  levelDesc: 
+  levelMap: {fileID: 734694666618798350, guid: 510e2617c1f66f440a06dbdbbb940107, type: 3}
+  gameItems: []
+  innerBackGround: {fileID: 21300000, guid: 124ea5a1b88070d44822f0bca12cd05f, type: 3}
+  outsideBackGround: {fileID: 21300000, guid: 243c72b791114f84eb4b1ed9c4c55ba5, type: 3}
+  frame: {fileID: 21300000, guid: f47de4fd6d4bf514e8f0f3c98a1340ef, type: 3}
+  themeColor: {r: 0.21176471, g: 0.8392157, b: 0.7882353, a: 1}

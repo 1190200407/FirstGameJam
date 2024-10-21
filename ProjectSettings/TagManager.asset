@@ -4,25 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TurnPoint
-  - Dog
-  - Water
-  - Cat
-  - Chick
-  - NotTakeWater
+  - Pushable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - DarkBackGround
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Item
+  - NormalState
+  - Obstacle
+  - SoulState
+  - Light
+  - ObstacleTrigger
   - 
   - 
   - 
@@ -44,6 +39,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: InnerWorld
+    uniqueID: 474850949
+    locked: 0
+  - name: BackGround
+    uniqueID: 2773231105
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacle
+    uniqueID: 1443481571
+    locked: 0
+  - name: Light
+    uniqueID: 1406063077
+    locked: 0
+  - name: Player
+    uniqueID: 1548782163
+    locked: 0
+  - name: Front
+    uniqueID: 3620942409
     locked: 0
