@@ -12,6 +12,7 @@ public class Firefly : MonoBehaviour
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Ease moveEase;
+    private float curRadius = 0;
 
     public virtual void Start()
     {
@@ -28,9 +29,24 @@ public class Firefly : MonoBehaviour
 
     public void SetRadius(float radius)
     {
-        this.radius = radius;
+
         circleLight.LightRadius = radius;
         light2D.pointLightInnerRadius = radius;
         light2D.pointLightOuterRadius = radius;
+    }
+
+    public void MoveTo(Vector3 pos)
+    {
+        circleLight.collider2D.enabled = false;
+        SetRadius(curRadius / 2f);
+        transform.DOMove(pos, moveSpeed).SetSpeedBased().SetEase(moveEase).OnComplete(() =>
+        {
+            circleLight.collider2D.enabled = true;
+            SetRadius(radius);
+        });
+        DOTween.To(() => curRadius, x => {
+            curRadius = x;
+            SetRadius(curRadius); // Update the radius during the tween
+        }, radius, moveSpeed / 4).SetSpeedBased().SetEase(moveEase);
     }
 }

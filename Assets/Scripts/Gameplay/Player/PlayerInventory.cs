@@ -76,7 +76,8 @@ public class PlayerInventory : MonoBehaviour
         if (inputHandler.itemFlag)
         {
             inputHandler.itemFlag = false;
-            SelectedItem?.OnActivate();
+            if (!MyEventSystem.IsPointerOverUI())
+                SelectedItem?.OnActivate();
         }
     }
 

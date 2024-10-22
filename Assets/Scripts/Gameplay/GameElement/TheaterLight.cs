@@ -45,5 +45,6 @@ public class TheaterLight : Interactable
         isInteracting = !isInteracting;
         LevelManager.Instance.player.IsInteracting = isInteracting;
         rotateHint?.SetActive(isInteracting);
+        AudioManager.Instance.PlaySfx("通用交互");
     }
 }

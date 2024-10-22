@@ -9,10 +9,12 @@ public class FireflyBox : MonoBehaviour
     [SerializeField] private float speedThreshold = 5f;
     [SerializeField] private float breakThreshold = 1f;
     private bool isFalling = false;
+    private Dictionary<Firefly, Vector2> fireflyPosDict;
 
     IEnumerator Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        fireflyPosDict = new Dictionary<Firefly, Vector2>();
         yield return null;
         foreach (var firefly in fireflies)
         {
@@ -30,18 +32,27 @@ public class FireflyBox : MonoBehaviour
         if (isFalling && rb.velocity.y > -breakThreshold)
         {
             isFalling = false;
-            Break();
+            StartCoroutine(Break());
         }
     }
 
-    public void Break()
+    public IEnumerator Break()
     {
+        AudioManager.Instance.PlaySfx("玻璃罐碎裂");
+
+        foreach (var firefly in fireflies)
+        {
+            fireflyPosDict.Add(firefly, firefly.transform.position);
+            firefly.transform.position = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f));
+        }
+        yield return null;
         foreach (var firefly in fireflies)
         {
             firefly.gameObject.SetActive(true);
+            firefly.MoveTo(fireflyPosDict[firefly]);
         }
 
-        GameObject.Destroy(this.gameObject, 0.1f);
+        GameObject.Destroy(this.gameObject);
         MyEventSystem.Trigger(new DestroyObjectEvent { gameObject = this.gameObject });
     }
 }

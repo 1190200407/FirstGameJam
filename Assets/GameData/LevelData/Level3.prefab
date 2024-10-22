@@ -167,7 +167,7 @@ MonoBehaviour:
   - {x: -0.96320117, y: 2.4829013, z: 0}
   m_ShapePathHash: 519157752
   m_Mesh: {fileID: 0}
-  m_InstanceId: -467314
+  m_InstanceId: 99240
   m_LocalBounds:
     m_Center: {x: -0.9560745, y: 2.4935927, z: 0}
     m_Extent: {x: 0.24101469, y: 0.010691404, z: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   - {x: -1.115223, y: 1.0117449, z: 0}
   m_ShapePathHash: 1419652743
   m_Mesh: {fileID: 0}
-  m_InstanceId: -457596
+  m_InstanceId: 99320
   m_LocalBounds:
     m_Center: {x: -0.47471923, y: 1.089993, z: 0}
     m_Extent: {x: 0.6405038, y: 0.08157319, z: 0}
@@ -2926,8 +2926,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.8140562, y: -1.2769529, z: 0}
-    m_Extent: {x: 1.9184562, y: 1.6849469, z: 0}
+    m_Center: {x: -2.8194, y: -1.275, z: 0}
+    m_Extent: {x: 1.9212, y: 1.6881, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3105,7 +3105,7 @@ MonoBehaviour:
   - {x: 3.0428863, y: -1.4385991, z: 0}
   m_ShapePathHash: 245203306
   m_Mesh: {fileID: 0}
-  m_InstanceId: -419288
+  m_InstanceId: 99314
   m_LocalBounds:
     m_Center: {x: 0.0017957687, y: 0.314556, z: 0}
     m_Extent: {x: 3.0410905, y: 1.7650884, z: 0}
@@ -3293,8 +3293,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.8158116, y: -1.2759999, z: 0}
-    m_Extent: {x: 1.9167008, y: 1.6858999, z: 0}
+    m_Center: {x: -2.8158116, y: -1.2732499, z: 0}
+    m_Extent: {x: 1.9167008, y: 1.6886499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   - {x: -3.19488, y: 2.5791633, z: 0}
   m_ShapePathHash: -664768128
   m_Mesh: {fileID: 0}
-  m_InstanceId: -426358
+  m_InstanceId: 99306
   m_LocalBounds:
     m_Center: {x: -0.15468478, y: 2.6424537, z: 0}
     m_Extent: {x: 3.0413802, y: 0.06422782, z: 0}
@@ -3762,7 +3762,7 @@ PrefabInstance:
       objectReference: {fileID: 8646891078625742668}
     - target: {fileID: 1250463453076333595, guid: 595c525e8630a624a87d570c32751b86, type: 3}
       propertyPath: maxPivot
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1250463453076333595, guid: 595c525e8630a624a87d570c32751b86, type: 3}
       propertyPath: minPivot
@@ -4018,19 +4018,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6410623754795152157, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: -2.8158
+      value: -2.8155499
       objectReference: {fileID: 0}
     - target: {fileID: 6410623754795152157, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -1.281003
+      value: -1.2734499
       objectReference: {fileID: 0}
     - target: {fileID: 6410623754795152157, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.9227998
+      value: 1.92275
       objectReference: {fileID: 0}
     - target: {fileID: 6410623754795152157, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 1.688997
+      value: 1.6884499
       objectReference: {fileID: 0}
     - target: {fileID: 7709778913597982032, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
       propertyPath: m_LocalPosition.x

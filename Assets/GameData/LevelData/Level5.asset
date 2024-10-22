@@ -20,4 +20,5 @@ MonoBehaviour:
   innerBackGround: {fileID: 21300000, guid: 124ea5a1b88070d44822f0bca12cd05f, type: 3}
   outsideBackGround: {fileID: 21300000, guid: 243c72b791114f84eb4b1ed9c4c55ba5, type: 3}
   frame: {fileID: 21300000, guid: f47de4fd6d4bf514e8f0f3c98a1340ef, type: 3}
-  themeColor: {r: 0.21176471, g: 0.8392157, b: 0.7882353, a: 1}
+  themeColor: {r: 0.31409606, g: 0.8392157, b: 0.21176471, a: 1}
+  backgroundMusic: {fileID: 8300000, guid: c0dc1bf869d8d3143873cf181a21846c, type: 3}

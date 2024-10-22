@@ -76,6 +76,7 @@ public class Totem : Interactable
     public override void Interact()
     {
         Turn();
+        AudioManager.Instance.PlaySfx("通用交互");
     }
 
     public void Turn()

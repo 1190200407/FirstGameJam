@@ -14,4 +14,5 @@ public class LevelData : ScriptableObject
     public Sprite outsideBackGround;
     public Sprite frame;
     public Color themeColor;
+    public AudioClip backgroundMusic;
 }

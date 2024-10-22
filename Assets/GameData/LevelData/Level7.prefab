@@ -142,7 +142,7 @@ MonoBehaviour:
   - {x: 0.9574466, y: 2.2518687, z: 0}
   m_ShapePathHash: -1371492342
   m_Mesh: {fileID: 0}
-  m_InstanceId: 212610
+  m_InstanceId: 49922
   m_LocalBounds:
     m_Center: {x: 1.0386353, y: 1.6850233, z: 0}
     m_Extent: {x: 0.08118862, y: 0.56684834, z: 0}
@@ -565,7 +565,7 @@ MonoBehaviour:
   - {x: 0.95737624, y: 0.15945102, z: 0}
   m_ShapePathHash: 1658589178
   m_Mesh: {fileID: 0}
-  m_InstanceId: 212660
+  m_InstanceId: 49974
   m_LocalBounds:
     m_Center: {x: 1.2790259, y: -0.08256948, z: 0}
     m_Extent: {x: 0.32164967, y: 0.24202052, z: 0}
@@ -3226,7 +3226,7 @@ MonoBehaviour:
   - {x: -1.920474, y: 1.121359, z: 0}
   m_ShapePathHash: -1120663947
   m_Mesh: {fileID: 0}
-  m_InstanceId: 212648
+  m_InstanceId: 49962
   m_LocalBounds:
     m_Center: {x: -0.801129, y: 1.1980631, z: 0}
     m_Extent: {x: 1.1195339, y: 0.24111086, z: 0}
@@ -3712,7 +3712,7 @@ MonoBehaviour:
   - {x: 2.881578, y: -1.4321469, z: 0}
   m_ShapePathHash: 2087082532
   m_Mesh: {fileID: 0}
-  m_InstanceId: 212670
+  m_InstanceId: 49984
   m_LocalBounds:
     m_Center: {x: -0.0005412102, y: 0.31038916, z: 0}
     m_Extent: {x: 2.8821192, y: 1.7664183, z: 0}
@@ -4393,7 +4393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5064353473055853650, guid: 5c863b16955f0f545acf51763fa36d4d, type: 3}
       propertyPath: m_InstanceId
-      value: -826366
+      value: -128786
       objectReference: {fileID: 0}
     - target: {fileID: 8049541927372360031, guid: 5c863b16955f0f545acf51763fa36d4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -4911,7 +4911,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 630375515149831776, guid: 45faf3ec8aebe6848ae8546eee7931a8, type: 3}
       propertyPath: m_InstanceId
-      value: -826408
+      value: -128812
       objectReference: {fileID: 0}
     - target: {fileID: 2388934590196216671, guid: 45faf3ec8aebe6848ae8546eee7931a8, type: 3}
       propertyPath: fireflies.Array.data[0]

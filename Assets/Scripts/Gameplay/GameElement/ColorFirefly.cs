@@ -15,9 +15,10 @@ public class ColorFirefly : Firefly
     
     public override void Start()
     {
+        base.Start();
         light2D.color = color;
         successPos = successPoint.position;
-        sqrHalfRadius = radius * radius / 25f;
+        sqrHalfRadius = radius * radius / 16f;
         originalPos = transform.position;
     }
     

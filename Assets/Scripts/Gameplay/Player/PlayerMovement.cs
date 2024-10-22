@@ -336,6 +336,7 @@ public class PlayerMovement : MonoBehaviour
 		if (CurState == PlayerState.Soul && IsOutsideLight())
 		{
 			SetCurState(PlayerState.Normal);
+			AudioManager.Instance.PlaySfx("变身");
 		}
 		
 		if (CurState == PlayerState.Normal)
@@ -344,9 +345,10 @@ public class PlayerMovement : MonoBehaviour
 			AnimHandler.outLineAmount = isInLight ? 1 : 0;
 			if (InputHandler.switchFlag)
 			{
-				if (isInLight)
+				if (isInLight && !MyEventSystem.IsPointerOverUI())
 				{
 					SetCurState(PlayerState.Soul);
+					AudioManager.Instance.PlaySfx("变身");
 					AnimHandler.outLineAmount = 0;
 				}
 				InputHandler.switchFlag = false;
@@ -356,7 +358,11 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (InputHandler.switchFlag)
 			{
-				SetCurState(PlayerState.Normal);
+				if (!MyEventSystem.IsPointerOverUI())
+				{
+					SetCurState(PlayerState.Normal);
+					AudioManager.Instance.PlaySfx("变身");
+				}
 				InputHandler.switchFlag = false;
 			}
 		}
@@ -449,6 +455,7 @@ public class PlayerMovement : MonoBehaviour
     #region RUN METHODS
 	private void Push()
 	{
+		AudioManager.Instance.PlaySfxWithCD("推箱子", 2f);
 		float targetSpeed = _moveInput.x * Data.runMaxSpeed * 0.5f;
 		RB.velocity = new Vector2(targetSpeed, RB.velocity.y);
 		pushRB.velocity = new Vector2(targetSpeed, pushRB.velocity.y);
@@ -656,6 +663,7 @@ public class PlayerMovement : MonoBehaviour
 			force -= RB.velocity.y;
 
 		RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+        AudioManager.Instance.PlaySfx("跳跃", 3f);
 		#endregion
 	}
 

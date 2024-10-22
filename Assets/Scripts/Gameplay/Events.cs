@@ -52,3 +52,9 @@ public struct TouchFireflyEvent
 {
     public ColorFirefly colorFirefly;
 }
+
+public struct PlaySoundEvent
+{
+    public string soundName;
+    public float volumeScale;
+}

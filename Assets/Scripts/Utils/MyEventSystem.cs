@@ -1,8 +1,14 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class MyEventSystem
 {
+    public static bool IsPointerOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
     // 保存事件字典，key 是事件参数类型，value 是对应的事件回调列表
     private static Dictionary<Type, Delegate> eventDictionary = new Dictionary<Type, Delegate>();
 

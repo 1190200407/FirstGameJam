@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1.5
-  moveSpeed: 2
-  moveEase: 15
+  moveSpeed: 4
+  moveEase: 1
 --- !u!1 &8206294035032944598
 GameObject:
   m_ObjectHideFlags: 0
