@@ -27,6 +27,18 @@ public class Firefly : MonoBehaviour
         light2D.pointLightOuterRadius = radius;
     }
 
+    void OnEnable()
+    {
+        if (circleLight != null)
+            circleLight.enabled = true;
+    }
+
+    void OnDisable()
+    {
+        if (circleLight != null)
+            circleLight.enabled = false;
+    }
+
     public void SetRadius(float radius)
     {
 

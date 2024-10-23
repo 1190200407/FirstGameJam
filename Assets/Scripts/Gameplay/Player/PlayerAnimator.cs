@@ -46,11 +46,21 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (!Mathf.Approximately(outLineAmount, material.GetFloat("_OutlineAlpha")))
             material.SetFloat("_OutlineAlpha", Mathf.Lerp(material.GetFloat("_OutlineAlpha"), outLineAmount, 10f * Time.deltaTime));
+
+        anim.SetBool("IsGrounded", mov.LastOnGroundTime >= mov.Data.coyoteTime - 0.01f);
+        anim.SetFloat("VerticalSpeed", mov.RB.velocity.y);
+        anim.SetBool("IsPush", mov.IsPushing);
+        anim.SetBool("IsWalk", Mathf.Abs(mov.RB.velocity.x) > 0.1f);
     }
 
     public void SetOutlineColor(Color color)
     {
         material.SetColor("_OutlineColor", color);
+    }
+
+    public void Throw()
+    {
+        anim.SetTrigger("Throw");
     }
 
     // private void LateUpdate()

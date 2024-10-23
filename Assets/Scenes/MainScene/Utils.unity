@@ -175,18 +175,38 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2186566783528686137, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1497
+      objectReference: {fileID: 0}
     - target: {fileID: 2258586019590859907, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: m_Name
       value: Utils
       objectReference: {fileID: 0}
     - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: testMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 11400000, guid: 4b333fbf2235e774e9c06630a17ce237, type: 2}
+      objectReference: {fileID: 11400000, guid: d5ded4acde422e24eb3f9576cb3542d4, type: 2}
+    - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
+      propertyPath: innerDarkIntensity
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
+      propertyPath: innerBrightIntensity
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
+      propertyPath: outsideBrightIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498186959479937300, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1499
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

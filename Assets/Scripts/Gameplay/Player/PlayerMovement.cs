@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool IsSliding { get; private set; }
 	public bool IsInsideLight { get; private set; }
 	public bool IsInteracting { get; set; }
+	public bool IsPushing { get; set; }
 
 	//Timers (also all fields, could be private and a method returning a bool could be used)
 	public float LastOnGroundTime { get; private set; }
@@ -109,12 +110,14 @@ public class PlayerMovement : MonoBehaviour
         InputHandler = GetComponent<InputHandler>();
 	}
 
-	public void Init()
+	public void Init(LevelData levelData)
 	{
 		SetGravityScale(Data.gravityScale);
 		SetCurState(PlayerState.Normal);
 		IsFacingRight = true;
 		InputHandler.enabled = true;
+        GetComponentInChildren<PlayerAnimator>().SetOutlineColor(levelData.themeColor);
+        GetComponent<PlayerInventory>().LoadItemDatas(levelData.gameItems);
 	}
 
 	private void Update()
@@ -376,11 +379,18 @@ public class PlayerMovement : MonoBehaviour
 		if (CurState == PlayerState.Normal)
 		{
 			if (LastOnGroundTime > 0f && ((LastOnWallLeftTime > 0f && InputHandler.movementInput.x < 0) || (LastOnWallRightTime > 0f && InputHandler.movementInput.x > 0)))
+			{
 				Push();
-			else if (IsWallJumping)
-				Run(Data.wallJumpRunLerp);
-			else
-				Run(1);
+				IsPushing = true;
+			}
+			else 
+			{
+				IsPushing = false;
+				if (IsWallJumping)
+					Run(Data.wallJumpRunLerp);
+				else
+					Run(1);
+			}
 		}
 		else
 		//Handle Swim
@@ -663,7 +673,7 @@ public class PlayerMovement : MonoBehaviour
 			force -= RB.velocity.y;
 
 		RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
-        AudioManager.Instance.PlaySfx("跳跃", 3f);
+        AudioManager.Instance.PlaySfx("跳跃", 2f);
 		#endregion
 	}
 

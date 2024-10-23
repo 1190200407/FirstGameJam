@@ -29,14 +29,14 @@ public class Match : MonoBehaviour
     void Update()
     {
         destroyTime -= Time.deltaTime;
-        if (isDead)
+        if (isDead && light2D != null)
         {
             radius = Mathf.Lerp(radius, 0, 5 * Time.deltaTime);
 
             if (radius < 0.1f)
             {
                 Destroy(light2D.gameObject);
-                enabled = false;
+                light2D = null;
             }
             else
             {

@@ -12,6 +12,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     public LevelData levelData;
     public PlayerMovement player;
     public InputHandler input;
+    public PlayerAnimator animator;
     public GameObject levelMap = null;
     
     public Light2D innerGlobalLight {get; private set;}
@@ -52,13 +53,20 @@ public class LevelManager : MonoSingleton<LevelManager>
     void OnEnable()
     {
         MyEventSystem.Register<StateChangeEvent>(OnChangeState);
+        MyEventSystem.Register<CreateObjectEvent>(OnCreateObject);
         MyEventSystem.Register<DestroyObjectEvent>(OnDestroyObject);
     }
 
     void OnDisable()
     {
         MyEventSystem.Unregister<StateChangeEvent>(OnChangeState);
+        MyEventSystem.Register<CreateObjectEvent>(OnCreateObject);
         MyEventSystem.Unregister<DestroyObjectEvent>(OnDestroyObject);
+    }
+
+    void Start()
+    {
+        if (testMode) LoadLevelData(levelData);
     }
 
     #region 加载关卡
@@ -100,18 +108,16 @@ public class LevelManager : MonoSingleton<LevelManager>
         }
 
         //加载关卡地图
-        levelMap = GameObject.Instantiate(data.levelMap);
+        if (!testMode)
+            levelMap = GameObject.Instantiate(data.levelMap);
 
         //加载背景音乐
         AudioManager.Instance.ChangeMusic(data.backgroundMusic);
-
         LoadLevelResources();
-        player.GetComponentInChildren<PlayerAnimator>().SetOutlineColor(data.themeColor);
-        player.GetComponent<PlayerInventory>().LoadItemDatas(data.gameItems);
 
         yield return null;
         //开启玩家输入
-        player.Init();
+        player.Init(data);
     }
 
     public void LoadLevelResources()
@@ -119,6 +125,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         // 获取玩家
         player = GameObject.FindObjectOfType<PlayerMovement>();
         input = GameObject.FindObjectOfType<InputHandler>();
+        animator = GameObject.FindObjectOfType<PlayerAnimator>();
 
         // 获取所有光源、遮挡物和镜子
         innerGlobalLight = GameObject.Find("InnerGlobalLight").GetComponent<Light2D>();
@@ -138,9 +145,17 @@ public class LevelManager : MonoSingleton<LevelManager>
         changeStateCoroutine = StartCoroutine(ChangeStateCoroutine(@event.newState));
     }
 
+    private void OnCreateObject(CreateObjectEvent @event)
+    {
+        foreach (var shadowCaster in @event.gameObject.GetComponentsInChildren<ShadowCaster2D>())
+        {
+            ShadowCasters.Add(shadowCaster);
+        }
+    }
+
     private void OnDestroyObject(DestroyObjectEvent @event)
     {
-        if (@event.gameObject.TryGetComponent(out ShadowCaster2D shadowCaster))
+        foreach (var shadowCaster in @event.gameObject.GetComponentsInChildren<ShadowCaster2D>())
         {
             ShadowCasters.Remove(shadowCaster);
         }

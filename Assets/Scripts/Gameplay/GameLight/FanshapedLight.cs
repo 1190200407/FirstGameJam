@@ -161,7 +161,14 @@ public class FanshapedLight : InteractableLight
         MergeClosePoints();
         
         // 7.更新光和碰撞体
-        if (points.Count < 3) return;
+        if (points.Count < 3)
+        {
+            light2D.enabled = false;
+            collider2D.enabled = false;
+            return;
+        }
+        light2D.enabled = true;
+        collider2D.enabled = true;
         light2D.SetShapePath(points.ToArray());
         collider2D.SetPath(0, MyMathUtil.ConvertToVector2Array(points));
     }

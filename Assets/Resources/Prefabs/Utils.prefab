@@ -527,7 +527,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -859,6 +859,7 @@ MonoBehaviour:
   levelData: {fileID: 0}
   player: {fileID: 0}
   input: {fileID: 0}
+  animator: {fileID: 0}
   levelMap: {fileID: 0}
   fanLight: {fileID: 5765128005061803622, guid: d6525ee7f1968504abf1c71cf850cb6c, type: 3}
   circleLight: {fileID: 7361768177080928509, guid: 6fa92501a8506954ab841ee73edb044a, type: 3}
@@ -996,7 +997,7 @@ MonoBehaviour:
   musicSource2: {fileID: 8528399070848393359}
   sfxAudioSrc: {fileID: 6029277310679787001}
   fadeDuration: 3
-  targetVolume: 1
+  targetVolume: 0.3
   bgmList: []
   sfxList:
   - {fileID: 8300000, guid: 3fd8d717a97e8a042b78ada428887aba, type: 3}
@@ -1059,7 +1060,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

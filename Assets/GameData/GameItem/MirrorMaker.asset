@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86764d63b2043fc46b0003a710005a18, type: 3}
+  m_Name: MirrorMaker
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 510e73beea7f5db419cdca3db08d8593, type: 3}
+  desc: "\u6309\u4F4F\u4E0A\u4E0B\u5E76\u70B9\u51FB\u5DE6\u952E\u5728\u8EAB\u524D\u5236\u9020\u955C\u5B50"
+  hasNumberLimit: 0
+  isEmpty: 0
+  scriptName: MirrorMaker
+  relativePrefab: {fileID: 624709817453023605, guid: f278dd63a2e4f144c92b2247b91da712, type: 3}

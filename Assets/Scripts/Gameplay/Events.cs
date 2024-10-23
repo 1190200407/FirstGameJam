@@ -16,6 +16,12 @@ public struct DestroyObjectEvent
     public GameObject gameObject;
 }
 
+
+public struct CreateObjectEvent
+{
+    public GameObject gameObject;
+}
+
 public struct SelectItemEvent
 {
     public GameItemData itemData;
@@ -51,6 +57,12 @@ public struct LightCandleEvent
 public struct TouchFireflyEvent
 {
     public ColorFirefly colorFirefly;
+}
+
+public struct TheaterLightMoveEvent
+{
+    public TheaterLight from;
+    public float delta;
 }
 
 public struct PlaySoundEvent

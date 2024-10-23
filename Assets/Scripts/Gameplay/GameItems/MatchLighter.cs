@@ -16,6 +16,7 @@ public class MatchLighter : GameItemScript
         
         //投掷
 		AudioManager.Instance.PlaySfxWithCD("点火柴", 0.5f);
+        LevelManager.Instance.animator.Throw();
         matchObj.GetComponent<Rigidbody2D>().AddForce((player.localScale.x < 0 ? -player.right : player.right) * 4f + player.up * 2f, ForceMode2D.Impulse);
         matchObj.GetComponent<Rigidbody2D>().AddForceAtPosition(player.transform.right * 0.05f, Vector2.up, ForceMode2D.Impulse);
         spawnMatches.Add(matchObj.GetComponent<Match>());

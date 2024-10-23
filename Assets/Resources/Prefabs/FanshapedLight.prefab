@@ -102,8 +102,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.8158116, y: -1.2745498, z: 0}
-    m_Extent: {x: 1.9167008, y: 1.6873499, z: 0}
+    m_Center: {x: -0.2965156, y: -27.535353, z: 0}
+    m_Extent: {x: 0.88451564, y: 0.4984436, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -114,9 +114,9 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -4.7325125, y: -0.8709204, z: 0}
-  - {x: -0.8991108, y: 0.40799403, z: 0}
-  - {x: -1.1124997, y: -2.9618998, z: 0}
+  - {x: -1.1810312, y: -27.285059, z: 0}
+  - {x: 0.581208, y: -27.03691, z: 0}
+  - {x: -0.30029106, y: -28.033796, z: 0}
 --- !u!60 &2147494317520088717
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -161,11 +161,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1, y: -1}
-      - {x: -1, y: 1}
-      - {x: 1, y: 1}
-      - {x: 1, y: -1}
-      - {x: -1, y: -1}
+    - - {x: -3.2276983, y: -23.725542}
+      - {x: -0.19075203, y: -26.494215}
+      - {x: 0.8216648, y: -27.598785}
+      - {x: -0.59439707, y: -29.994635}
+      - {x: -4.2552943, y: -27.140772}
   m_UseDelaunayMesh: 0
 --- !u!114 &5765128005061803622
 MonoBehaviour:

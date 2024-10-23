@@ -20,23 +20,29 @@ public class TheaterLight : Interactable
         {
             // 获取y轴输入
             float yInput = LevelManager.Instance.input.movementInput.y;
-            
-            float temp = curPivot;
-            curPivot += Time.deltaTime * rotateSpeed * yInput;
-            curPivot = Mathf.Clamp(curPivot, minPivot, maxPivot);
-            float angleChange = curPivot - temp;
-            if (isClockwise) angleChange = -angleChange;
-            
-            // 旋转物体
-            Vector2 pivotPosition = pivotPoint.position;
+            float moveDelta = Time.deltaTime * yInput;
+            Move(moveDelta);
+            MyEventSystem.Trigger(new TheaterLightMoveEvent { from = this, delta = moveDelta });
+        }
+    }
 
-            // 旋转 fanLight 的三个点
-            if (fanLight != null)
-            {
-                fanLight.startPoint.position = MyMathUtil.RotatePoint(fanLight.startPoint.position, pivotPosition, angleChange);
-                fanLight.cutPoint1.position = MyMathUtil.RotatePoint(fanLight.cutPoint1.position, pivotPosition, angleChange);
-                fanLight.cutPoint2.position = MyMathUtil.RotatePoint(fanLight.cutPoint2.position, pivotPosition, angleChange);
-            }
+    protected void Move(float moveDelta)
+    {
+        float temp = curPivot;
+        curPivot += moveDelta * rotateSpeed;
+        curPivot = Mathf.Clamp(curPivot, minPivot, maxPivot);
+        float angleChange = curPivot - temp;
+        if (isClockwise) angleChange = -angleChange;
+        
+        // 旋转物体
+        Vector2 pivotPosition = pivotPoint.position;
+
+        // 旋转 fanLight 的三个点
+        if (fanLight != null)
+        {
+            fanLight.startPoint.position = MyMathUtil.RotatePoint(fanLight.startPoint.position, pivotPosition, angleChange);
+            fanLight.cutPoint1.position = MyMathUtil.RotatePoint(fanLight.cutPoint1.position, pivotPosition, angleChange);
+            fanLight.cutPoint2.position = MyMathUtil.RotatePoint(fanLight.cutPoint2.position, pivotPosition, angleChange);
         }
     }
 

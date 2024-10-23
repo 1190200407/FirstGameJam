@@ -74,7 +74,7 @@ public class AudioManager : MonoSingleton<AudioManager>
             });
 
             // 渐变渐入新音源
-            nextSource.volume = 0.5f;    // 设置音量为 0.5，准备渐入
+            nextSource.volume = 0f;    // 设置音量为 0，准备渐入
             nextSource.Play();        // 播放新音乐
             nextSource.DOFade(targetVolume, fadeDuration);
         });
@@ -82,7 +82,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     else
     {
         // 如果当前没有活跃音源，直接渐入新音源
-        nextSource.volume = 0.5f;    // 设置音量为 0.5，准备渐入
+        nextSource.volume = 0f;    // 设置音量为 0，准备渐入
         nextSource.Play();        // 播放新音乐
         nextSource.DOFade(targetVolume, fadeDuration);
     }
