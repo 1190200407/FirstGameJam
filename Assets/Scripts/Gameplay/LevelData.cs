@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LevelData")]
 public class LevelData : ScriptableObject
 {
-    public int levelId;
+    public string levelId;
     public string levelName;
     public string levelDesc;
     public GameObject levelMap;

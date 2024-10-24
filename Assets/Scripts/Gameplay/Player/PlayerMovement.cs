@@ -554,12 +554,14 @@ public class PlayerMovement : MonoBehaviour
 	
 	private bool IsFullyInsideLight()
 	{
+		int cnt = 1;
 		foreach (var dir in _lightCheckDirections)
 		{
 			Vector2 checkPoint = (Vector2)_lightCollisionCheckPoint.position + dir * _lightCheckSize;
 			if (!Physics2D.OverlapPoint(checkPoint, _lightLayer))
 			{
-				return false;
+				cnt--;
+				if (cnt < 0) return false;
 			}
 		}
 

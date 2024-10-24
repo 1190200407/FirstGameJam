@@ -17,8 +17,8 @@ MonoBehaviour:
   levelDesc: 
   levelMap: {fileID: 493633766711871549, guid: a54f7bd859234d14fa101133ad70c364, type: 3}
   gameItems: []
-  innerBackGround: {fileID: 21300000, guid: 124ea5a1b88070d44822f0bca12cd05f, type: 3}
-  outsideBackGround: {fileID: 21300000, guid: 243c72b791114f84eb4b1ed9c4c55ba5, type: 3}
-  frame: {fileID: 21300000, guid: f47de4fd6d4bf514e8f0f3c98a1340ef, type: 3}
+  innerBackGround: {fileID: 21300000, guid: 86cafe714a6674f409208aac08753186, type: 3}
+  outsideBackGround: {fileID: 21300000, guid: d279a38d82bc76e43b20073db749f617, type: 3}
+  frame: {fileID: 21300000, guid: 2e9bc5ec786d63a4e961b0aed58ad7f0, type: 3}
   themeColor: {r: 0.8392157, g: 0.5850641, b: 0.21176471, a: 1}
   backgroundMusic: {fileID: 8300000, guid: 75d4313d98f6e4946b5e49b8a3339e6a, type: 3}

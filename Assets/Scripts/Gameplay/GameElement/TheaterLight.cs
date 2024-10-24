@@ -9,9 +9,9 @@ public class TheaterLight : Interactable
     public GameObject rotateHint;
     [SerializeField] private bool isClockwise;
     [SerializeField] private float rotateSpeed = 5f;
-    [SerializeField] private float minPivot = -15f;
-    [SerializeField] private float maxPivot = 15f;
-    [SerializeField] private float curPivot = 0f;
+    [SerializeField] protected float minPivot = -15f;
+    [SerializeField] protected float maxPivot = 15f;
+    [SerializeField] protected float curPivot = 0f;
 
     protected override void OnTriggerStay2D(Collider2D other)
     {

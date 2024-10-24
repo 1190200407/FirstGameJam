@@ -82,6 +82,7 @@ public class FanshapedLight : InteractableLight
             Vector3[] points = shadowCaster.shapePath;
             for (int i = 0; i < points.Length; i++)
             {
+                if (shadowCaster == null) continue;
                 Vector2 worldPoint = shadowCaster.transform.TransformPoint(points[i]);
                 float normalizedAngle;
                 if (MyMathUtil.IsPointInFanArea(worldPoint, startPoint.position, radius, rotation, spotAngle, out normalizedAngle))
@@ -194,6 +195,7 @@ public class FanshapedLight : InteractableLight
 
         foreach (var shadowCaster in shadowCasters)
         {
+            if (shadowCaster == null) continue;
             if (reflectMirror != null && shadowCaster.gameObject == reflectMirror.gameObject) continue;
             intersection = MyMathUtil.GetRayPolygonIntersections(rayOrigin, rayDirection, shadowCaster);
             

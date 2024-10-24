@@ -116,8 +116,11 @@ public class LevelManager : MonoSingleton<LevelManager>
         LoadLevelResources();
 
         yield return null;
+
         //开启玩家输入
         player.Init(data);
+        //时间开始流动
+        Time.timeScale = 1;
     }
 
     public void LoadLevelResources()

@@ -12,7 +12,8 @@ public class MatchLighter : GameItemScript
     public override void OnActivate()
     {
         Transform player = LevelManager.Instance.player.transform;
-        GameObject matchObj = GameObject.Instantiate(data.relativePrefab , player.position, Quaternion.identity, LevelManager.Instance.levelMap.transform);
+        GameObject matchObj = GameObject.Instantiate(data.relativePrefab , player.position, Quaternion.identity);
+        if (!LevelManager.Instance.testMode) matchObj.transform.SetParent(LevelManager.Instance.levelMap.transform);
         
         //投掷
 		AudioManager.Instance.PlaySfxWithCD("点火柴", 0.5f);

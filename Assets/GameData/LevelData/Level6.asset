@@ -15,11 +15,11 @@ MonoBehaviour:
   levelId: 6
   levelName: 
   levelDesc: 
-  levelMap: {fileID: 1377007476472199709, guid: 3fce9d7d316e0ef4c8c3030294a37606, type: 3}
+  levelMap: {fileID: 3873012293368507496, guid: 4b97a62dfd19c904e8b866f7298a7e93, type: 3}
   gameItems:
   - {fileID: 11400000, guid: d763ba98bf302244a953b5dfcf712cdd, type: 2}
   innerBackGround: {fileID: 21300000, guid: ee2d7a907f5be424095d7c9a931cc67e, type: 3}
   outsideBackGround: {fileID: 21300000, guid: b8c4ffd746d8ba7479b8cb387b31994d, type: 3}
   frame: {fileID: 21300000, guid: ee31702fa9a098042bf8f93bfd9a37a9, type: 3}
-  themeColor: {r: 1, g: 1, b: 1, a: 1}
+  themeColor: {r: 0.31409606, g: 0.8392157, b: 0.21176471, a: 1}
   backgroundMusic: {fileID: 8300000, guid: c0dc1bf869d8d3143873cf181a21846c, type: 3}

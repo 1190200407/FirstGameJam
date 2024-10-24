@@ -185,12 +185,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: testMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 11400000, guid: d5ded4acde422e24eb3f9576cb3542d4, type: 2}
+      objectReference: {fileID: 11400000, guid: 4a39af1929c06984abdb115530c81680, type: 2}
     - target: {fileID: 6171417238352136322, guid: 51c3debf5408fd442b85281a227a9241, type: 3}
       propertyPath: innerDarkIntensity
       value: 1.2
